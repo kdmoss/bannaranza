@@ -27,6 +27,7 @@
         return `rgb(${r},${g},${b})`;
     };
 
+    // Get a random icon from the icons folder
     const randomIcon = (i: number, j: number) => {
         const ix = Math.floor(Math.random() * ICON_COUNT) + 1;
         const name = "/icons/" + ix + ".svg";
@@ -39,12 +40,13 @@
             on: Math.random() > 0.85,
             x: i * CELL_SIZE,
             y: j * CELL_SIZE,
-            rotation: Math.floor(Math.random() * 180),
+            rotation: 0,
             color: randomIcon(i, j),
         };
         return tile;
     };
 
+    // Uses html2canvas to save the generated banner
     const saveBanner = () => {
         html2canvas(banner).then((canvas) => {
             const link = document.createElement("a");
@@ -108,10 +110,5 @@
     .tile {
         position: absolute;
         color: white;
-    }
-    .save-canvas {
-        position: fixed;
-        top: -99999px;
-        left: -99999px;
     }
 </style>
